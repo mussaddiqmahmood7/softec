@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import Aeroplane from "../../assets/home/aeroplane.png";
+import {HeroSectionImages} from "../../assets/constants/herosection"
+---
+<div
+  class="flex w-full flex-col gap-8 sm:gap-12 lg:gap-16 justify-center items-center relative"
+  transition:animate="none"
+>
+<Image widths={[400,800]} src={Aeroplane} alt="aeroplane" class="absolute -right-2 sm:right-5 xl:right-20 object-contain -top-16 sm:top-28 xl:top-20 aspect-auto size-24 sm:size-36 lg:size-52"/>
+<div>
+<h1
+    class="leading-[28px] text-brandColor sm:leading-[56px] max-w-screen-lg text-2xl sm:text-5xl font-extrabold text-center "
+  >
+  Be In This World As Though You Were A Traveller.
+    <!-- <span
+      class="font-black text-transparent bg-clip-text bg-gradient-to-r from-[#982aff] via-[#ff4da0] to-[#fd4f3c]"
+      >Legacy</span
+    >  -->
+  </h1>
+  <p class="text-base text-center text-brandColor">(Al-Bukhari 6416)</p>
+</div>  
+  <div
+    class="grid grid-cols-4 sm:grid-cols-6 h-[372px] sm:h-[492px] 2xl:h-[612px] xl:px-10 gap-3 w-full"
+  >
+    <div
+      class="grid col-span-2 sm:col-span-1 col-start-1 rounded-lg overflow-hidden row-start-4 sm:row-start-3 row-span-3 h-[90px] sm:h-[240px] 2xl:h-[300px]"
+    >
+      <Image
+        
+        src={HeroSectionImages[2].image}
+        alt={HeroSectionImages[2].alt}
+        widths={[150, 300, 450]}
+        class={`object-cover h-full w-full  transition-all duration-1000 `}
+      />
+    </div>
+
+    <div
+      class="row-start-1 row-span-3 col-span-4 sm:col-span-3 col-start-1 sm:col-start-2 rounded-lg overflow-hidden h-[90px] sm:h-[240px] 2xl:h-[300px] hover:shadow-2xl"
+    >
+      <Image
+      src={HeroSectionImages[0].image}
+      alt={HeroSectionImages[0].alt}
+        widths={[400, 800, 1000]}
+        class="object-cover h-full w-full"
+      />
+    </div>
+    <div
+      class="row-start-10 sm:row-start-4 row-span-2 col-span-2 sm:col-span-1 col-start-1 sm:col-start-2 rounded-lg overflow-hidden h-[60px] sm:h-40 xl:h-[200px] hover:shadow-2xl"
+    >
+      <Image
+      src={HeroSectionImages[3].image}
+      alt={HeroSectionImages[3].alt}
+        widths={[150, 300, 450]}
+        class="object-cover h-full w-full transition-all duration-700 "
+      />
+    </div>
+    <div
+      class="row-start-7 sm:row-start-4 row-span-3 col-span-4 sm:col-span-3 col-start-1 sm:col-start-3 rounded-lg overflow-hidden h-[90px] sm:h-[240px] 2xl:h-[300px] hover:shadow-2xl"
+    >
+      <Image
+      src={HeroSectionImages[1].image}
+        alt={HeroSectionImages[1].alt}
+      widths={[400, 800, 1000]}
+        class="object-cover h-full w-full transition-all duration-700 "
+      />
+    </div>
+    <div
+      class="row-start-10 sm:row-start-2 row-span-2 col-span-2 sm:col-span-1 col-start-3 sm:col-start-5 rounded-lg overflow-hidden h-[60px] sm:h-40 xl:h-[200px] hover:shadow-2xl"
+    >
+      <Image
+      src={HeroSectionImages[5].image}
+        alt={HeroSectionImages[5].alt}
+        widths={[400, 800, 1200]}
+        class="object-cover h-full w-full transition-all duration-700 "
+      />
+    </div>
+    <div
+      class="row-start-4 sm:row-start-3 row-span-3 col-span-2 sm:col-span-1 col-start-3 sm:col-start-6 rounded-lg overflow-hidden h-[90px] sm:h-[240px] 2xl:h-[300px] hover:shadow-2xl"
+    >
+      <Image
+      src={HeroSectionImages[4].image}
+        alt={HeroSectionImages[4].alt}
+      widths={[150, 300, 450]}
+        class="object-cover h-full w-full transition-all duration-700 "
+      />
+    </div>
+  </div>
+</div>
