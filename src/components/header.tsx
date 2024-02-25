@@ -67,7 +67,7 @@ function Header() {
           <A text="About us" link="/about/" />
           <A text="Contact us" link="/contact/" />
         </div>
-        <div className={`max-lg:hidden  grid-cols-2 gap-2 bg-red-400  ${token==null ?" lg:hidden ":" lg:grid "}`}>
+        <div className={`max-lg:hidden  grid-cols-2 gap-2   ${token==null ?" lg:grid ":" lg:hidden "}`}>
           
           <a href="./login">
                 <Button text="Login" active={true}/>
@@ -77,7 +77,7 @@ function Header() {
               </a>
           
         </div>
-        <div className={`hidden lg:grid gap-2 ${token!=null || token!=undefined?"":"hidden"}`}>
+        <div className={` max-lg:hidden gap-2 ${token==null?"hidden":""}`}>
           
           <a href="./profile">
                 <Button text="Profile" active={true}/>
@@ -139,7 +139,7 @@ function Header() {
 
             <A2 text="About us" link="/about/" />
             <A2 text="Contact us" link="/contact/" />
-            <div className={`grid grid-cols-2 gap-2 w-full py-3 ${token!=null ?"hidden":""} `}>
+            <div className={`grid grid-cols-2 gap-2 w-full py-3 ${token?"hidden":""} `}>
               <a href="./login">
                 <Button text="Login" active={true} />
               </a>
@@ -147,7 +147,7 @@ function Header() {
                 <Button text="Sing Up" active={true} />
               </a>
             </div>
-            <div className={`grid   w-full py-3 ${token!=null ?"":"hidden"} `}>
+            <div className={`grid   w-full py-3 ${token ?"":"hidden"} `}>
               <a href="./profile">
                 <Button text="Profile" active={true} />
               </a>

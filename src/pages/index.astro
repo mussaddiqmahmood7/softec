@@ -5,6 +5,9 @@ import HeroSection from "../components/home/HeroSection.astro"
 import Hajj from "../components/home/hajj.astro";
 import Tourism from "../components/home/Tourism.astro"
 import Header from "../components/header";
+import {FAQS} from "../assets/constants/faq"
+import FAQs from "../components/comman/FAQs.astro";
+
 ---
 
 <MainLayout title="Home" >	
@@ -12,5 +15,6 @@ import Header from "../components/header";
 	<HeroSection/>
 	    <Hajj/>
 		<Tourism/>
+		<FAQs client:load FAQS={FAQS}/>
 		<Footer/>
 </MainLayout>

@@ -11,6 +11,8 @@ export default function Form({ isLogin }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [singup, setSingup]=useState(false)
+  const [login, setLogin]=useState(false)
   const [validError, setValidError] = useState([
     false,
     false,
@@ -80,7 +82,8 @@ export default function Form({ isLogin }: Props) {
           setValidError([false, false, false, false]);
           sessionStorage.removeItem("token");
           sessionStorage.setItem("token", `${res.data.token.access}`);
-
+          setLogin(false)
+            setSingup(true)
         }).catch((er) => { console.log(er) })
       }
     }
@@ -101,14 +104,15 @@ export default function Form({ isLogin }: Props) {
           setValidError([false, false, false, false]);
           sessionStorage.removeItem("token");
           sessionStorage.setItem("token", `${res.data.token.access}`);
-
+            setLogin(true)
+            setSingup(false)
         }).catch((er) => { console.log(er) })
       }
     }
   }
 
   return (
-    <div className="lg:col-span-2 flex flex-col gap-3  lg:gap-5 w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 h-full lg:row-span-6 order-1 z-30 mx-auto my-auto">
+    <div className="lg:col-span-2 relative flex flex-col gap-3  lg:gap-5 w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 h-full lg:row-span-6 order-1 z-30 mx-auto my-auto">
       <div className=" w-full flex flex-col gap-2 pb-2 font-medium  text-DarkGrey ">
         <div className="flex flex-col lg:flex-row gap-2 w-full">
           {!isLogin && <div className="flex flex-col gap-1 w-full">
@@ -163,6 +167,7 @@ export default function Form({ isLogin }: Props) {
           </div>}
         </div>
       </div>
+      {login?<p className='text-brandColor'>Loged IN</p>:singup?<p className='text-brandColor'>Sing Up</p>:<p></p>}
       <div
         onClick={() => {
           onSubmitHandler();
