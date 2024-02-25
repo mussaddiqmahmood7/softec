@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
 import Logo from "../assets/header/logo.svg";
-import companyName from "../assets/header/companyName.svg";
 import downArrow from "../assets/header/downArrow.svg";
 import Minus from "../assets/header/minus.svg";
 import Button from "./comman/Button";
 import A from "./header/A";
 import A2 from "./header/A2";
+import Form from "./signup/form";
 
 function Header() {
   const [dropdown, setDropdown] = useState(false);
   const [sideDropdown, setSideDropdown] = useState(false);
   const [dropMenu, setDropMenu] = useState(false);
+  const [token, setToken]=useState<string | null>('');
 
 
   useEffect(() => {
     setDropdown(false);
     setSideDropdown(false);
     document.body.style.overflow = dropMenu ? "hidden" : "auto";
+     setToken(sessionStorage.getItem('token'));
   }, [dropMenu]);
   return (
     <header
       id="header"
-      className={`pt-10 lg:py-6 leading-normal lg:leading-normal px-5 lg:px-2 border-b border-b-white w-full flex flex-col justify-end lg:justify-center items-center  mx-auto transition-all duration-700  top-0   ${
+      className={`pt-10  lg:py-6 leading-normal lg:leading-normal px-5 lg:px-2 border-b border-b-white w-full flex flex-col justify-end lg:justify-center items-center  mx-auto transition-all duration-700  ${
         dropMenu ? "overscroll-none" : ""} `}
     >
       <div className="flex justify-between px-2 sm:px-6 py-2 items-center bg-white rounded-xl font-medium relative z-40 max-w-screen-xl w-full">
         <div className="flex gap-2">
-            <p className="text-2xl font-bold text-green-500">Logo</p>
+            <a href="./" className="text-2xl font-bold text-green-500">Logo</a>
           {/* <img src={Logo.src} alt="Fantech Logo" width="100%" height="auto" /> */}
 
         </div>
@@ -65,14 +67,22 @@ function Header() {
           <A text="About us" link="/about/" />
           <A text="Contact us" link="/contact/" />
         </div>
-        <div className="hidden lg:grid grid-cols-2 gap-2">
+        <div className={`max-lg:hidden  grid-cols-2 gap-2 bg-red-400  ${token==null ?" lg:hidden ":" lg:grid "}`}>
           
-          <a href="/#contact">
-                <Button text="Login" />
+          <a href="./login">
+                <Button text="Login" active={true}/>
               </a>
-              <a href="/#contact">
-                <Button text="Sing Up" />
+              <a href="./singup">
+                <Button text="Sing Up" active={true}/>
               </a>
+          
+        </div>
+        <div className={`hidden lg:grid gap-2 ${token!=null || token!=undefined?"":"hidden"}`}>
+          
+          <a href="./profile">
+                <Button text="Profile" active={true}/>
+              </a>
+              
           
         </div>
         <div
@@ -129,12 +139,17 @@ function Header() {
 
             <A2 text="About us" link="/about/" />
             <A2 text="Contact us" link="/contact/" />
-            <div className="grid grid-cols-2 gap-2 w-full py-3 ">
-              <a href="/#contact">
-                <Button text="Login" />
+            <div className={`grid grid-cols-2 gap-2 w-full py-3 ${token!=null ?"hidden":""} `}>
+              <a href="./login">
+                <Button text="Login" active={true} />
               </a>
-              <a href="/#contact">
-                <Button text="Sing Up" />
+              <a href="./singup">
+                <Button text="Sing Up" active={true} />
+              </a>
+            </div>
+            <div className={`grid   w-full py-3 ${token!=null ?"":"hidden"} `}>
+              <a href="./profile">
+                <Button text="Profile" active={true} />
               </a>
             </div>
 
@@ -165,6 +180,7 @@ function Header() {
           </div>
         </div>
       </div>
+      
     </header>
   );
 }

@@ -1,0 +1,23 @@
+---
+import Button from "./Button";
+import FAQ from "../comman/faq";
+interface Porps {
+    FAQS: [{ question: string; anwser: string }];
+}
+const { FAQS } = Astro.props as Porps;
+---
+
+<div class="flex flex-col justify-center items-center gap-12">
+  <div class="flex flex-col justify-center items-center gap-7">
+    <p class="text-3xl font-bold text-brandColor text-center">We love to help</p>
+  </div>
+  <div class="">
+    {
+      FAQS.map((data) => {
+        return (
+          <FAQ question={data.question} anwser={data.anwser} client:load />
+        );
+      })
+    }
+  </div>
+</div>

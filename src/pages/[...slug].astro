@@ -1,0 +1,45 @@
+---
+"use client"
+import MainLayout from "../layout/MainLayout.astro";
+import axios from 'axios';
+import type {Data} from "../assets/constants/interfaces"
+import type {Root} from "../assets/constants/interfaces"
+
+export async function getStaticPaths() {
+  const api = "http://192.168.190.205:8000/agent/tours_list/";
+  const blogs = "/api/blogs";
+  const response = await axios.get(api);
+  const AllData: Root[] = await response.data;
+  
+//    const {id} = Astro.props;
+//    const Response:Root = await axios.post("http://192.168.190.205:8000/agent/tours_list/",{'ctgId':id});
+//    const data:Root[] = await Response;
+  //   const AllData: Data[] = localStorage.getItem('ctg');
+  return AllData.map(
+      ({
+      id,
+      name,
+      itinerary,
+      category,
+      exclusion,inclusion,description,thumbnail
+    }) => {
+        const slug = category.slug
+        return {
+        params: { slug },
+        props: {
+            id,name,itinerary,exclusion,inclusion,thumbnail,description
+        },
+    };
+}
+);
+}
+
+const { id,name,itinerary,inclusion,exclusion,description,thumbnail} = Astro.props;
+---
+
+ <MainLayout title={name}>
+    <div class="flex flex-col justify-center items-center">
+ 
+    </div>
+
+</MainLayout>
